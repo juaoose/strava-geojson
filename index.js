@@ -18,7 +18,7 @@ function loadRuns(STRAVA_TOKEN) {
         .pipe(through2(function (id, enc, callback) {
             xhr.getActivity(STRAVA_TOKEN, id, function (err, res) {
                 if (err) {
-                    console.error(err);
+                    
                 }
                 // purposely avoid throwing on errors
                 callback(null, res);
@@ -28,7 +28,10 @@ function loadRuns(STRAVA_TOKEN) {
         .pipe(through2(function (chunk, enc, callback) {
             const converted = convert(chunk);
             if(converted) {
-                callback(null, ...converted);
+                converted.forEach(function (c) {
+                    this.push(c);
+                }.bind(this));
+                callback();
             }
             else {
                 callback(null, converted);
