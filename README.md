@@ -5,10 +5,14 @@ Export runs from [Strava](https://www.strava.com/) into
 
 ## get a token
 
-* go to http://www.strava.com/developers
-* click 'Manage Your Application'
-* show `Your Access Token`
-* copy & paste it verbatim
+The easiest way to get a token is to use [Strava API Playground](https://developers.strava.com/playground/).
+
+* go to [Strava API Playground](https://developers.strava.com/playground/)
+* click 'Authorize'
+* paste you app info, available in your [Strava settings](https://www.strava.com/settings/api)
+* select one of 'activity:read' or 'activity:read_all' for the 'scope'
+* click 'Authorize'
+* execute a request from the playground and copy the 'access_token'
 
 ## install
 
